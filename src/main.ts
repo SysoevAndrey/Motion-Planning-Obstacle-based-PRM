@@ -83,6 +83,7 @@ export const solve = (data: TEntity[]): Promise<IPolyline[]> => {
     const neighbours = generateNeighbours(
       node,
       points,
+      10,
       polygons,
       closed,
       endPoint

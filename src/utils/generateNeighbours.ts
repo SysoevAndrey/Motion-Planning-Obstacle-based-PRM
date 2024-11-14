@@ -5,11 +5,19 @@ import { manhattanDistance } from './manhattanDistance';
 export const generateNeighbours = (
   node: INodePoint,
   points: IPoint[],
+  n: number,
   polygons: IPolygon[],
   closed: Map<IPoint, INodePoint>,
   endPoint: IPoint
-): { key: IPoint; value: INodePoint }[] =>
-  points
+): { key: IPoint; value: INodePoint }[] => {
+  const sorted = points.sort(
+    (a, b) =>
+      Math.sqrt(Math.pow(a.x - node.x, 2) + Math.pow(a.y - node.y, 2)) -
+      Math.sqrt(Math.pow(b.x - node.x, 2) + Math.pow(b.y - node.y, 2))
+  );
+
+  return sorted
+    .slice(0, n)
     .filter(
       (point) => canConnectPoints(node, point, polygons) && !closed.has(point)
     )
@@ -22,3 +30,4 @@ export const generateNeighbours = (
         parent: node,
       },
     }));
+};

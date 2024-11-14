@@ -1,6 +1,6 @@
 import { IPoint } from '../types';
 
-export const generatePoints = (count: number = 1000): IPoint[] => {
+export const generatePoints = (count: number = 100): IPoint[] => {
   const points: IPoint[] = [];
 
   for (let i = 0; i < count; i++) {

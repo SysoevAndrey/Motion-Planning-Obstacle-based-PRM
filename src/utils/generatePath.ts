@@ -8,8 +8,8 @@ export const generatePath = (node: INodePoint): IPoint[] => {
   while (currentNode !== null) {
     const point: IPoint = {
       type: 'point',
-      x: currentNode.x,
-      y: currentNode.y,
+      x: parseFloat(currentNode.x.toFixed(1)),
+      y: parseFloat(currentNode.y.toFixed(1)),
     };
     points.unshift(point);
     currentNode = currentNode.parent;
